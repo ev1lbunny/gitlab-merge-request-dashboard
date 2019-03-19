@@ -1,0 +1,25 @@
+{
+  "name": "gitlab-mr-dash",
+  "version": "0.0.1",
+  "description": "Dashboard to show outstanding MR's & PR's for known gitlab project groups",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kmalkin/gitlab-merge-request-dashboard.git"
+  },
+  "keywords": [
+    "gitlab",
+    "merge",
+    "request",
+    "dashboard"
+  ],
+  "author": "kmalkin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kmalkin/gitlab-merge-request-dashboard/issues"
+  },
+  "homepage": "https://github.com/kmalkin/gitlab-merge-request-dashboard#readme"
+}
