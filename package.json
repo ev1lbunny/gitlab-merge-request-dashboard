@@ -4,7 +4,7 @@
   "description": "Dashboard to show outstanding MR's & PR's for known gitlab project groups",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node node-lint * && echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
   "repository": {
@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/kmalkin/gitlab-merge-request-dashboard/issues"
   },
-  "homepage": "https://github.com/kmalkin/gitlab-merge-request-dashboard#readme"
+  "homepage": "https://github.com/kmalkin/gitlab-merge-request-dashboard#readme",
+  "dependencies": {
+    "lint": "1.1.2",
+    "node": "11.12.0"
+  }
 }
