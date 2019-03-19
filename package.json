@@ -25,6 +25,7 @@
   "homepage": "https://github.com/kmalkin/gitlab-merge-request-dashboard#readme",
   "dependencies": {
     "bootstrap": "4.3.1",
+    "express": "4.16.4",
     "lint": "1.1.2",
     "node": "11.12.0",
     "node-gitlab": "1.6.1"
