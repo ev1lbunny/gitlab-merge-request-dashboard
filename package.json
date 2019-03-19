@@ -4,7 +4,7 @@
   "description": "Dashboard to show outstanding MR's & PR's for known gitlab project groups",
   "main": "app.js",
   "scripts": {
-    "test": "node node-lint * && echo \"Error: no test specified\" && exit 1",
+    "test": "node-lint && echo \"Error: no test specified\" && exit 0",
     "start": "node app.js"
   },
   "repository": {
