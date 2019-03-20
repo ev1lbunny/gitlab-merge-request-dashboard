@@ -1,17 +1,42 @@
 /*eslint no-console: ["error", { allow: ["log", "warn", "error"] }] */
 
+/* Application Requirements */
 const express = require('express')
 const app = express()
+const addRequestId = require('express-request-id')()
+const morgan = require('morgan')
+
+/* Config Loading Requirements */
 const _ = require('lodash')
 const config = require('./config/app.json')
 const defaultConfig = config.dev
 const environment = process.env.NODE_ENV || 'DEV'
 const environmentConfig = config[environment]
 const finalConfig = _.merge(defaultConfig, environmentConfig)
-
 global.gConfig = finalConfig;
 
+morgan.token('id', function getId(req) {
+  return req.id
+});
+
+/* Logger Setup */
+var loggerFormat = ':id [:date[web]]" :method :url" :status';
+
+/* App Setup */
+app.use(addRequestId);
 app.set('view engine', 'pug')
+app.use(morgan(loggerFormat, {
+  skip: function (req, res) {
+      return res.statusCode < 400
+  },
+  stream: process.stderr
+}))
+app.use(morgan(loggerFormat, {
+  skip: function (req, res) {
+      return res.statusCode >= 400
+  },
+  stream: process.stdout
+}))
 
 app.get('/', (req, res) => {
   res.render('index')

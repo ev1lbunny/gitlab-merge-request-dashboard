@@ -1,5 +1,6 @@
 /*eslint no-console: ["error", { allow: [ "debug", "log", "warn", "error"] }] */
 
+/* Server loads the App */
 const app = require('./app')
 
 app.listen(global.gConfig.port, () => {
