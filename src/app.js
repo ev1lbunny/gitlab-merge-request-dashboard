@@ -39,10 +39,13 @@ app.use(morgan(loggerFormat, {
 
 /* Configured Routes */
 app.get('/', (req, res) => {
-  res.render('index')
+  res.render('main')
 })
 app.get('/config', (req, res) => {
   res.json(global.gConfig)
+})
+app.get('/health', (req, res) => {
+  /** PLACEHOLDER */
 })
 
 module.exports = app

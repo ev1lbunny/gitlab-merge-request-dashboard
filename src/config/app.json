@@ -4,7 +4,7 @@
         "port": 3000,
         "gitlab_user": "user",
         "gitlab_token": "abc123#1412!",
-        "gitlab_base_uri": "http://localhost/noop"
+        "gitlab_base_uri": "https://localhost/noop"
     },
     "nonprod": {
         "config_id": "NONPROD",
@@ -19,5 +19,12 @@
         "gitlab_user": "",
         "gitlab_token": "",
         "gitlab_base_uri": ""
+    },
+    "test": {
+        "config_id": "TEST",
+        "port": 3000,
+        "gitlab_user": "kmalkin",
+        "gitlab_token": "z7zE4hsPaYUoo7VnkBVM",
+        "gitlab_base_uri": "https://git.nonprod.williamhill.plc"
     }
 }
