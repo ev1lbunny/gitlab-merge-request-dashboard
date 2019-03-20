@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "prepare": "eslint --init",
-    "test": "eslint . && echo \"Error: no test specified\" && exit 0",
-    "start": "node app.js"
+    "test": "eslint ./src/**/*.js && npx jest",
+    "start": "node ./src/server.js"
   },
   "repository": {
     "type": "git",
