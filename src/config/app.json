@@ -1,14 +1,23 @@
 {
     "dev": {
         "config_id": "DEV",
-        "port": 3000
+        "port": 3000,
+        "gitlab_user": "user",
+        "gitlab_token": "abc123#1412!",
+        "gitlab_base_uri": "http://localhost/noop"
     },
     "nonprod": {
         "config_id": "NONPROD",
-        "port": 3000
+        "port": 3000,
+        "gitlab_user": "",
+        "gitlab_token": "",
+        "gitlab_base_uri": ""
     },
     "prod": {
         "config_id": "PROD",
-        "port": 3000
+        "port": 3000,
+        "gitlab_user": "",
+        "gitlab_token": "",
+        "gitlab_base_uri": ""
     }
 }
