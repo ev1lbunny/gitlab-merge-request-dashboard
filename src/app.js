@@ -13,6 +13,7 @@ const environmentConfig = config[environment]
 const finalConfig = _.merge(defaultConfig, environmentConfig)
 global.gConfig = finalConfig;
 
+/* Setup Morgen use tokens */
 morgan.token('id', function getId(req) {
   return req.id
 });
@@ -36,10 +37,10 @@ app.use(morgan(loggerFormat, {
   stream: process.stdout
 }))
 
+/* Configured Routes */
 app.get('/', (req, res) => {
   res.render('index')
 })
-
 app.get('/config', (req, res) => {
   res.json(global.gConfig)
 })
