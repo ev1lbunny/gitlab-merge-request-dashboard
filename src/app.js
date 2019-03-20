@@ -9,4 +9,8 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.get('/template', (req, res) => {
+  res.render('test-template')
+})
+
 module.exports = app
