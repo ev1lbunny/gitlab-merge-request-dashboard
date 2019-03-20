@@ -1,0 +1,14 @@
+{
+    "dev": {
+        "config_id": "DEV",
+        "port": 3000
+    },
+    "nonprod": {
+        "config_id": "NONPROD",
+        "port": 3000
+    },
+    "prod": {
+        "config_id": "PROD",
+        "port": 3000
+    }
+}

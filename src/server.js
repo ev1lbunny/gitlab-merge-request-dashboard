@@ -2,8 +2,8 @@
 
 const app = require('./app')
 
-var port = 7000
-
-app.listen(port, () => {
-  console.log(`Express App running → PORT ${port}`)
+app.listen(global.gConfig.port, () => {
+  console.log(`Configured from: ${global.gConfig.config_id} configuration`)
+  console.debug(`Full Config: ${JSON.stringify(global.gConfig, undefined, 4)}`)
+  console.log(`Express App running → PORT ${global.gConfig.port}`)
 });
