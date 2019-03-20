@@ -1,4 +1,4 @@
-/*eslint no-console: ["error", { allow: ["log", "warn", "error"] }] */
+/*eslint no-console: ["error", { allow: [ "debug", "log", "warn", "error"] }] */
 
 const app = require('./app')
 
