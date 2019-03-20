@@ -1,5 +1,3 @@
-/*eslint no-console: ["error", { allow: ["log", "warn", "error"] }] */
-
 /* Application Requirements */
 const express = require('express')
 const app = express()
