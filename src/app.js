@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const addRequestId = require('express-request-id')()
 const morgan = require('morgan')
+const gitlab = require('./services/gitlab')
 
 /* Config Loading Requirements */
 const _ = require('lodash')
@@ -45,7 +46,7 @@ app.get('/config', (req, res) => {
   res.json(global.gConfig)
 })
 app.get('/health', (req, res) => {
-  /** PLACEHOLDER */
+  res.json(gitlab.projects)
 })
 
 module.exports = app

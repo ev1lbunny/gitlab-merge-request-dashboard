@@ -6,6 +6,7 @@
   "scripts": {
     "prepare": "eslint --init",
     "test": "eslint ./src/**/*.js && npx jest",
+    "test-coverage": "istanbul cover _jest —- -R spec",
     "start": "node ./src/server.js"
   },
   "repository": {
@@ -28,12 +29,12 @@
     "bootstrap": "4.3.1",
     "express": "4.16.4",
     "express-request-id": "1.4.1",
+    "gitlab": "4.5.0",
     "jest": "24.5.0",
     "jquery": "3.3.1",
     "lodash": "4.17.11",
     "morgan": "1.9.1",
     "node": "11.12.0",
-    "node-gitlab": "1.6.1",
     "pug": "2.0.3",
     "pug-bootstrap": "0.0.15",
     "supertest": "4.0.2"
