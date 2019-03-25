@@ -2,9 +2,9 @@
     "dev": {
         "config_id": "DEV",
         "port": 3000,
-        "gitlab_user": "user",
-        "gitlab_token": "abc123#1412!",
-        "gitlab_base_uri": "https://localhost/noop"
+        "gitlab_user": "kmalkin",
+        "gitlab_token": "z7zE4hsPaYUoo7VnkBVM",
+        "gitlab_base_uri": "https://git.nonprod.williamhill.plc"
     },
     "nonprod": {
         "config_id": "NONPROD",
