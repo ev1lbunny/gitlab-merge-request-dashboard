@@ -3,7 +3,8 @@ const express = require('express')
 const app = express()
 const addRequestId = require('express-request-id')()
 const morgan = require('morgan')
-const gitlab = require('./services/gitlab')
+const index = require('./routes/index.js');
+const gitlab = require('./routes/gitlab.js');
 
 /* Config Loading Requirements */
 const _ = require('lodash')
@@ -39,14 +40,7 @@ app.use(morgan(loggerFormat, {
 }))
 
 /* Configured Routes */
-app.get('/', (req, res) => {
-  res.render('main')
-})
-app.get('/config', (req, res) => {
-  res.json(global.gConfig)
-})
-app.get('/health', (req, res) => {
-  res.json(gitlab.projects)
-})
+app.use('/', index);
+app.use('/gitlab/', gitlab)
 
 module.exports = app

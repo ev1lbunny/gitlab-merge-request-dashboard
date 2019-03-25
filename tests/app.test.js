@@ -37,3 +37,13 @@ describe("routes: /config", () => {
         expect(response.text).toBeDefined()
     })
 })
+
+describe("routes: /gitlab/projects", () => {
+    test("GET should respond as expected", async () => {
+        const response = await request(app)
+        .get("/gitlab/projects")
+        expect(response.status).toEqual(200)
+        expect(response.type).toEqual("application/json")
+        expect(response.text).toBeDefined()
+    })
+})
