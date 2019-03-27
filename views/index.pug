@@ -1,6 +1,6 @@
 extends ../node_modules/pug-bootstrap/_bootstrap
 
-block body  
+block body
 	nav.navbar.navbar-inverse.navbar-fixed-top
 		.container-fluid
 			.navbar-header
@@ -12,12 +12,98 @@ block body
 				a.navbar-brand(href='#') GitLab Merge Dashboard
 			#navbar.navbar-collapse.collapse
 				ul.nav.navbar-nav.navbar-right
-					li
-						a(href='#') Dashboard
-					li
-						a(href='#') Help
-	br
-	br
-	br
+					li.dropdown
+						a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+							| Dashboard 
+							span.caret
+						ul.dropdown-menu(role='menu')
+							li.divider
+							li.dropdown-header Core Groups
+							li
+								a(href='#') Terraform Modules
+							li
+								a(href='#') Cloud Services
+							li
+								a(href='#') Channel Infra
+							li.divider
+							li.dropdown-header Other Groups
+							li.divider
 
-	p HELLO PUG!!!
+
+	br
+	br
+	br
+	.container-fluid
+		.jumbotron
+			h2 Current Merge Requests for #{group}
+			table#pickle.table.table-hover.table-striped.table-bordered
+				th Merge Request 
+				th Created At
+				th Last Updated
+				th Current State
+				th Raised By
+					for mr in merge_requests
+						tr(class=mr class="danger")
+							td.title 
+								a(href=mr.web_url) #{mr.title}
+							td.created_at #{mr.created_at}
+							td.updated_at #{mr.updated_at}
+							td.state #{mr.state} 
+							td.author.name
+								a(href=mr.author.web_url) #{mr.author.name}
+
+	.container-fluid
+		.jumbotron
+			h2 Current Merge Requests for #{group}
+			table#pickle.table.table-hover.table-striped.table-bordered
+				th Merge Request 
+				th Created At
+				th Last Updated
+				th Current State
+				th Raised By
+					for mr in merge_requests
+						- var created_date = new Date(mr.created_at).getTime()
+						- var today = new Date()
+						- var now = new Date().getTime()
+						- var yesterday = new Date().setDate(today.getDate() - 1)
+						- var day_before_yesterday = new Date().setDate(today.getDate() - 2)
+
+						if created_date < day_before_yesterday
+							tr.danger(class=mr)
+								td.title 
+									a(href=mr.web_url) #{mr.title}
+								td.created_at #{mr.created_at}
+								td.updated_at #{mr.updated_at}
+								td.state #{mr.state} 
+								td.author.name
+									a(href=mr.author.web_url) #{mr.author.name}
+						else if created_date < yesterday
+							tr.warning(class=mr)
+								td.title 
+									a(href=mr.web_url) #{mr.title}
+								td.created_at #{mr.created_at}
+								td.updated_at #{mr.updated_at}
+								td.state #{mr.state} 
+								td.author.name
+									a(href=mr.author.web_url) #{mr.author.name}			
+						else if created_date < now
+							tr.info(class=mr)
+								td.title 
+									a(href=mr.web_url) #{mr.title}
+								td.created_at #{mr.created_at}
+								td.updated_at #{mr.updated_at}
+								td.state #{mr.state} 
+								td.author.name
+									a(href=mr.author.web_url) #{mr.author.name}
+						else
+							tr(class=mr)
+								td.title 
+									a(href=mr.web_url) #{mr.title}
+								td.created_at #{mr.created_at}
+								td.updated_at #{mr.updated_at}
+								td.state #{mr.state} 
+								td.author.name
+									a(href=mr.author.web_url) #{mr.author.name}						
+
+						
+						

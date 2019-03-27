@@ -1,12 +1,12 @@
 /*eslint no-console: ["error", { allow: ["error"] }] */
 
-var express = require('express');
-var router = express.Router();
-var request = require('request');
+const express = require('express')
+const router = express.Router()
+const request = require('request')
 
 router.get('/projects', (req, res) => {
   request({
-    uri: global.gConfig.gitlab_base_uri+"/api/v4/projects" ,
+    uri: global.gConfig.gitlab_base_uri+"/api/v4/groups/"+group ,
     headers: {"PRIVATE-TOKEN": global.gConfig.gitlab_token},
     rejectUnauthorized: false
   })
