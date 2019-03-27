@@ -6,7 +6,7 @@ const request = require('request')
 
 router.get('/projects', (req, res) => {
   request({
-    uri: global.gConfig.gitlab_base_uri+"/api/v4/groups/"+group ,
+    uri: global.gConfig.gitlab_base_uri+"/api/v4/groups/"+"cloud-services"+"/projects" ,
     headers: {"PRIVATE-TOKEN": global.gConfig.gitlab_token},
     rejectUnauthorized: false
   })

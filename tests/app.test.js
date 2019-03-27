@@ -9,7 +9,6 @@ describe("routes: /", () => {
         expect(response.status).toEqual(200)
         expect(response.type).toEqual("text/html")
         expect(response.text).toContain("GitLab Merge Dashboard")
-        expect(response.text).toContain("HELLO PUG")
     })
 })
 
