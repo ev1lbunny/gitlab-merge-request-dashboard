@@ -38,6 +38,7 @@
     "pug": "2.0.3",
     "pug-bootstrap": "0.0.15",
     "pug-lint": "2.5.0",
+    "request-promise": "4.2.4",
     "supertest": "4.0.2"
   },
   "devDependencies": {

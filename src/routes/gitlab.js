@@ -1,20 +1,14 @@
 /*eslint no-console: ["error", { allow: ["error"] }] */
 
 const express = require('express')
-const router = express.Router()
-const request = require('request')
+const gitlab_router = express.Router()
 
-router.get('/projects', (req, res) => {
-  request({
-    uri: global.gConfig.gitlab_base_uri+"/api/v4/groups/"+"cloud-services"+"/projects" ,
-    headers: {"PRIVATE-TOKEN": global.gConfig.gitlab_token},
-    rejectUnauthorized: false
-  })
-  .on('error', err => { 
-      console.error("ERROR OCCURED: DO SOMETHING") //TODO
-      return err
-    })
-  .pipe(res)
-})
+/* Controllers */
+const gitlab_controller = require('../controllers/gitlabController')
 
-module.exports = router
+gitlab_router.get('/merge_requests_by_project/:project_id', gitlab_controller.merge_requests_by_project_id)
+gitlab_router.get('/projects/:group_identifier', gitlab_controller.projects_by_group_identifier)
+gitlab_router.get('/group/:group_identifier', gitlab_controller.group_by_identifier)
+gitlab_router.get('/merge_requests_by_group/:group_identifier', gitlab_controller.merge_requests_by_group)
+
+module.exports = gitlab_router

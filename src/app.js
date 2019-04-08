@@ -3,8 +3,8 @@ const express = require('express')
 const app = express()
 const addRequestId = require('express-request-id')()
 const morgan = require('morgan')
-const index = require('./routes/index.js');
-const gitlab = require('./routes/gitlab.js');
+const index = require('./routes/index')
+const gitlab = require('./routes/gitlab')
 
 /* Config Loading Requirements */
 const _ = require('lodash')

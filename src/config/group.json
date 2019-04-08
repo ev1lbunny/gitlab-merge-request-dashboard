@@ -1,0 +1,12 @@
+{
+    "ids": [
+        "1493",
+        "1662",
+        "1739"
+    ],
+    "names": [
+        "cloud-services",
+        "terraform_modules",
+        "channel-infra"
+    ]
+}
