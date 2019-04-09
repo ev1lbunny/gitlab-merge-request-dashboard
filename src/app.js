@@ -21,7 +21,7 @@ morgan.token('id', function getId(req) {
 });
 
 /* Logger Setup */
-var loggerFormat = ':id [:date[web]]" :method :url" :status';
+var loggerFormat = ':id [:date[web]]" ~ :method :url" :status ~ :response-time ms ~ :remote-addr';
 
 /* App Setup */
 app.use(addRequestId);

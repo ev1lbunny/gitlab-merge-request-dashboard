@@ -16,10 +16,19 @@ index_router.get('/group/:group_identifier', (req, res) => {
 })
   
 index_router.get('/config', (req, res) => {
-  res.json(global.gConfig)
+  //res.json(global.gConfig)
+  res
+    .status(200)
+    .send("NO TOKEN FOR YOU BILLY")
 })
+
 index_router.get('/health', (req, res) => {
   res.json('')
+})
+
+/** Tidy up favicon calls returning 404 till icon file is provided**/
+index_router.get('/favicon.ico', (req, res) => {
+  res.status(204)
 })
 
 module.exports = index_router

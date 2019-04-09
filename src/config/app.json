@@ -3,7 +3,7 @@
         "config_id": "DEV",
         "port": 3000,
         "gitlab_user": "kmalkin",
-        "gitlab_token": "z7zE4hsPaYUoo7VnkBVM",
+        "gitlab_token": "Ppa95zvK8GXHwrRiFs44",
         "gitlab_base_uri": "https://git.nonprod.williamhill.plc"
     },
     "nonprod": {
@@ -24,7 +24,7 @@
         "config_id": "TEST",
         "port": 3000,
         "gitlab_user": "kmalkin",
-        "gitlab_token": "z7zE4hsPaYUoo7VnkBVM",
+        "gitlab_token": "Ppa95zvK8GXHwrRiFs44",
         "gitlab_base_uri": "https://git.nonprod.williamhill.plc"
     }
 }
