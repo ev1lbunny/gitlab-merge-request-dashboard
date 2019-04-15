@@ -78,25 +78,35 @@ docker logs <container_id>
 
 ### Installing & Running using Node on localhost
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+After configuring all the properties for your environment/s. Simply run the following;
 
 ```
-Give the example
+ npm start  
+
+> gitlab-mr-dash@0.0.1 start somedir/gitlab-merge-request-dashboard
+> node ./src/server.js
+
+Configured from: DEV configuration
+Full Config: {
+    "config_id": "DEV",
+    "port": 3000,
+    "gitlab_token": "",
+    "gitlab_base_uri": ""
+}
+Express App running → PORT 3000
 ```
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+*NB. Where the displayed config matches the config you defined in the app.json config file.
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+Full test suite can be run simply using;
+
+```
+npm test
+```
+
+This will run ```eslint ./src/**/*.js && pug-lint ./views/index.pug && npx jest``` under the hood. So it is checking js syntax, pug syntax and format as well as running all jest tests
 
 ### Break down into end to end tests
 
@@ -120,31 +130,18 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+* [Nodejs](https://nodejs.org/en/docs/) - Used to run the server
+* [Expressjs](https://expressjs.com/en/guide/routing.html) - Used to handle restful routing
+* [Pugjs](https://pugjs.org/api/getting-started.html) - Used to automatically create html webpages for the routes to render
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the tags on this repository. 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Karl Malkin**
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
 
