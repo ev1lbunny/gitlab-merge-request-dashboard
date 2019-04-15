@@ -103,7 +103,58 @@ Express App running → PORT 3000
 Full test suite can be run simply using;
 
 ```
-npm test
+npm test 
+
+> gitlab-mr-dash@0.0.1 test dir/gitlab-merge-request-dashboard
+> eslint ./src/**/*.js && pug-lint ./views/index.pug && npx jest
+
+
+dir/gitlab-merge-request-dashboard/src/controllers/gitlabController.js
+    8:3    warning  'opts' is not defined                no-undef
+   17:13   warning  'opts' is not defined                no-undef
+   29:3    warning  'opts' is not defined                no-undef
+   37:13   warning  'opts' is not defined                no-undef
+   49:3    warning  'opts' is not defined                no-undef
+   57:13   warning  'opts' is not defined                no-undef
+   69:3    warning  'p_opts' is not defined              no-undef
+   78:3    warning  'mr_opts' is not defined             no-undef
+   87:49   warning  'reject' is defined but never used   no-unused-vars
+   88:30   warning  'p_opts' is not defined              no-undef
+   92:5    warning  'project_ids' is not defined         no-undef
+   94:7    warning  'project_ids' is not defined         no-undef
+   96:12   warning  'project_ids' is not defined         no-undef
+  100:5    warning  'merge_req_promises' is not defined  no-undef
+  102:7    warning  'merge_req_promises' is not defined  no-undef
+  102:141  warning  'mr_opts' is not defined             no-undef
+  104:24   warning  'merge_req_promises' is not defined  no-undef
+  114:7    warning  'merge_requests' is not defined      no-undef
+  116:9    warning  'merge_requests' is not defined      no-undef
+  120:15   warning  'merge_requests' is not defined      no-undef
+
+dir/gitlab-merge-request-dashboard/src/routes/index.js
+  15:7    warning  'merges_to_review' is not defined  no-undef
+  16:7    warning  'merges_to_review' is not defined  no-undef
+  16:26   warning  'merges_to_review' is not defined  no-undef
+  17:125  warning  'merges_to_review' is not defined  no-undef
+
+✖ 24 problems (0 errors, 24 warnings)
+
+3ffcf1ca-4042-4b22-972c-a2bb7fab631d [Mon, 15 Apr 2019 14:08:49 GMT]" ~ GET /health" 501 ~ 0.391 ms ~ ::ffff:127.0.0.1
+72218b8f-d67c-4c6b-9f01-8660353665ff [Mon, 15 Apr 2019 14:08:49 GMT]" ~ GET /config" 501 ~ 0.155 ms ~ ::ffff:127.0.0.1
+ PASS  tests/app.test.js
+  Testing app base routes
+    routes: /
+      ✓ GET should respond as expected (720ms)
+    routes: /health
+      ✓ GET should respond as expected (5ms)
+    routes: /config
+      ✓ GET should respond as expected (2ms)
+
+66f446b0-d7ff-43a3-a704-dc1cfbec9240 [Mon, 15 Apr 2019 14:08:49 GMT]" ~ GET /" 200 ~ 685.364 ms ~ ::ffff:127.0.0.1
+Test Suites: 1 passed, 1 total
+Tests:       3 passed, 3 total
+Snapshots:   0 total
+Time:        2.221s
 ```
 
 This will run ```eslint ./src/**/*.js && pug-lint ./views/index.pug && npx jest``` under the hood. So it is checking js syntax, pug syntax and format as well as running all jest tests

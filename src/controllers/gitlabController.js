@@ -1,4 +1,5 @@
-/*eslint no-console: ["error", { allow: ["error"] }] */
+/*eslint no-undef: "warn"*/
+/*eslint no-unused-vars: "warn"*/
 
 const request_p = require('request-promise')
 

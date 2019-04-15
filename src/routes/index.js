@@ -1,3 +1,6 @@
+/*eslint no-undef: "warn"*/
+/*eslint no-unused-vars: "warn"*/
+
 var express = require('express')
 var request = require('request')
 var index_router = express.Router()
@@ -18,12 +21,14 @@ index_router.get('/group/:group_identifier', (req, res) => {
 index_router.get('/config', (req, res) => {
   //res.json(global.gConfig)
   res
-    .status(200)
-    .send("NO TOKEN FOR YOU BILLY")
+    .status(501)
+    .send("Not implemented yet")
 })
 
 index_router.get('/health', (req, res) => {
-  res.json('')
+  res
+    .status(501)
+    .send("Not implemented yet")
 })
 
 /** Tidy up favicon calls returning 404 till icon file is provided**/
