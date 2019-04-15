@@ -5,7 +5,7 @@ const request_p = require('request-promise')
 exports.projects_by_group_identifier = function(req, res) {
 
   opts = {
-    uri: global.gConfig.gitlab_base_uri+"/api/v4/groups/"+req.params.group_identifier+"/projects",
+    uri: global.gConfig.gitlab_base_uri+"/api/v4/groups/"+req.params.group_identifier+"/projects?per_page=1000",
     method: 'GET',
     headers: {"PRIVATE-TOKEN": global.gConfig.gitlab_token},
     rejectUnauthorized: false,
@@ -26,7 +26,7 @@ exports.projects_by_group_identifier = function(req, res) {
 
 exports.merge_requests_by_project_id = function (req, res) {
   opts = {
-    uri: global.gConfig.gitlab_base_uri+"/api/v4/projects/"+req.params.project_id+"/merge_requests?state=opened",
+    uri: global.gConfig.gitlab_base_uri+"/api/v4/projects/"+req.params.project_id+"/merge_requests?state=opened&per_page=1000",
     method: 'GET',
     headers: {"PRIVATE-TOKEN": global.gConfig.gitlab_token},
     rejectUnauthorized: false,
@@ -66,7 +66,7 @@ exports.group_by_identifier = function(req, res) {
 
 exports.merge_requests_by_group = function(req, res) {
   p_opts = {
-    uri: global.gConfig.gitlab_base_uri+"/api/v4/groups/"+req.params.group_identifier+"/projects",
+    uri: global.gConfig.gitlab_base_uri+"/api/v4/groups/"+req.params.group_identifier+"/projects?per_page=1000",
     method: 'GET',
     headers: {"PRIVATE-TOKEN": global.gConfig.gitlab_token},
     rejectUnauthorized: false,
@@ -92,13 +92,14 @@ exports.merge_requests_by_group = function(req, res) {
     projects.body.forEach(project =>{
       project_ids.push(project.id)
     })
+    console.debug("GIT PROJECT IDS BEING CHECKED = " +project_ids)
     return project_ids
   })
 
   const mr_promises = ids_promise.then(function(ids) {
     merge_req_promises = []
     ids.forEach(id =>{
-      merge_req_promises.push(request_p(global.gConfig.gitlab_base_uri+"/api/v4/projects/"+id+"/merge_requests?state=opened", mr_opts))
+      merge_req_promises.push(request_p(global.gConfig.gitlab_base_uri+"/api/v4/projects/"+id+"/merge_requests?state=opened&per_page=1000", mr_opts))
     })
     return Promise.all(merge_req_promises)
     .then(values => {

@@ -1,5 +1,5 @@
 var express = require('express')
-var request     = require('request');
+var request = require('request')
 var index_router = express.Router()
 
 index_router.get('/', (req, res) => {
