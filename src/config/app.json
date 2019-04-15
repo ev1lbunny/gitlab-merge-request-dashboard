@@ -2,29 +2,25 @@
     "dev": {
         "config_id": "DEV",
         "port": 3000,
-        "gitlab_user": "kmalkin",
-        "gitlab_token": "Ppa95zvK8GXHwrRiFs44",
-        "gitlab_base_uri": "https://git.nonprod.williamhill.plc"
+        "gitlab_token": "",
+        "gitlab_base_uri": ""
     },
     "nonprod": {
         "config_id": "NONPROD",
         "port": 3000,
-        "gitlab_user": "",
         "gitlab_token": "",
         "gitlab_base_uri": ""
     },
     "prod": {
         "config_id": "PROD",
         "port": 3000,
-        "gitlab_user": "",
         "gitlab_token": "",
         "gitlab_base_uri": ""
     },
     "test": {
         "config_id": "TEST",
         "port": 3000,
-        "gitlab_user": "kmalkin",
-        "gitlab_token": "Ppa95zvK8GXHwrRiFs44",
-        "gitlab_base_uri": "https://git.nonprod.williamhill.plc"
+        "gitlab_token": "",
+        "gitlab_base_uri": ""
     }
 }
