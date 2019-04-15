@@ -92,7 +92,6 @@ exports.merge_requests_by_group = function(req, res) {
     projects.body.forEach(project =>{
       project_ids.push(project.id)
     })
-    console.debug("GIT PROJECT IDS BEING CHECKED = " +project_ids)
     return project_ids
   })
 
