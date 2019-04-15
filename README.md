@@ -108,25 +108,10 @@ npm test
 
 This will run ```eslint ./src/**/*.js && pug-lint ./views/index.pug && npx jest``` under the hood. So it is checking js syntax, pug syntax and format as well as running all jest tests
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Only thing that needs to be configured for deployment (assuming you have separted your properties into environments as suggested) is the node runtime env that matches the config you need to run it for. 
+IE defaults to DEV but just set it to PROD etc if you need to swap env.
 
 ## Built With
 
