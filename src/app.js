@@ -5,6 +5,7 @@ const addRequestId = require('express-request-id')()
 const morgan = require('morgan')
 const index = require('./routes/index')
 const gitlab = require('./routes/gitlab')
+const path = require('path')
 
 /* Config Loading Requirements */
 const _ = require('lodash')
@@ -42,5 +43,6 @@ app.use(morgan(loggerFormat, {
 /* Configured Routes */
 app.use('/', index);
 app.use('/gitlab/', gitlab)
+app.use("/public", express.static(path.join(__dirname, 'public')))
 
 module.exports = app
