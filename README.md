@@ -69,7 +69,7 @@ docker build -t gitlab-dashboard .
 docker run -p HOST_PORT:CONTAINER_PORT -d gitlab-dashboard
 ```
 
-*NB. Where HOST_PORT is the port that you want to access the service on and CONTAINER_PORT is the port you defined in your app.json config file.
+*NB. Where HOST_PORT is the port that you want to access the service on and CONTAINER_PORT is the port you defined in your app.json config file. Dockerfile by default only exposes the standard assumed ports 3000-3003. Change this if required
 
 To access the logs should there be any issues, you can simply then run 
 
