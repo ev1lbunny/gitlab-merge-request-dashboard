@@ -1,0 +1,12 @@
+{
+    "ids": [
+        "1234",
+        "5678",
+        "9012"
+    ],
+    "names": [
+        "some-group",
+        "some-other-group",
+        "a-different-group"
+    ]
+}

@@ -1,0 +1,71 @@
+extends index
+
+block content
+
+	.container-fluid
+	.jumbotron
+		h2 Current Merge Requests for #{selected_group}
+		table#pickle.table.table-hover.table-striped.table-bordered
+			th Merge Request
+			th Repository
+			th Created At
+			th Last Updated
+			th Current State
+			th Raised By
+
+			if merge_requests
+				for mr in merge_requests
+					- var created_date = new Date(mr.created_at).getTime()
+					- var today = new Date()
+					- var green = new Date().getTime()
+					- var amber = new Date().setDate(today.getDate() - rag_states.amber)
+					- var red = new Date().setDate(today.getDate() - rag_states.red)
+
+					- var url_no_domain = mr.web_url.substr(mr.web_url.indexOf(selected_group)+selected_group.length+1)
+					- var project_name = url_no_domain.substr(0, url_no_domain.indexOf("/"))
+					- var project_url = mr.web_url.substr(0, mr.web_url.indexOf("/merge_requests"))
+
+					if created_date < red
+						tr.danger(class=mr)
+							td.title 
+								a(href=mr.web_url) #{mr.title}
+							td.repo 
+								a(href=project_url) #{project_name}
+							td.created_at #{mr.created_at}
+							td.updated_at #{mr.updated_at}
+							td.state #{mr.state} 
+							td.author.name
+								a(href=mr.author.web_url) #{mr.author.name}
+					else if created_date < amber
+						tr.warning(class=mr)
+							td.title 
+								a(href=mr.web_url) #{mr.title}
+							td.repo 
+								a(href=project_url) #{project_name}
+							td.created_at #{mr.created_at}
+							td.updated_at #{mr.updated_at}
+							td.state #{mr.state} 
+							td.author.name
+								a(href=mr.author.web_url) #{mr.author.name}			
+					else if created_date < green
+						tr.success(class=mr)
+							td.title 
+								a(href=mr.web_url) #{mr.title}
+							td.repo 
+								a(href=project_url) #{project_name}
+							td.created_at #{mr.created_at}
+							td.updated_at #{mr.updated_at}
+							td.state #{mr.state} 
+							td.author.name
+								a(href=mr.author.web_url) #{mr.author.name}
+					else
+						tr(class=mr)
+							td.title 
+								a(href=mr.web_url) #{mr.title}
+							td.repo 
+								a(href=project_url) #{project_name}
+							td.created_at #{mr.created_at}
+							td.updated_at #{mr.updated_at}
+							td.state #{mr.state} 
+							td.author.name
+								a(href=mr.author.web_url) #{mr.author.name}	
