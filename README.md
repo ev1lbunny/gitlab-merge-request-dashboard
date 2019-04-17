@@ -58,7 +58,7 @@ As an example;
  }
 ```
 
-If you wish to specify your own RAG config for when to change status from green to amber to ref (defaul is older than 3days = amber, older than 5days = red)
+If you wish to specify your own RAG config for when to change status from green to amber to red (default is older than 3days = amber, older than 5days = red)
 Open the src/config/rag.json file and setup the information about the amber and red boundries you wish to use. Use values in days.
 
 As an example;
