@@ -6,7 +6,7 @@ var request = require('request')
 var index_router = express.Router()
 
 index_router.get('/', (req, res) => {
-  res.render('index', {groups: require('../config/group')})
+  res.render('home', {groups: require('../config/group')})
 })
 
 index_router.get('/group/:group_identifier', (req, res) => {
