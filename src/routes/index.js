@@ -17,7 +17,7 @@ index_router.get('/group/:group_identifier', (req, res) => {
       } else {
         merges_to_review = JSON.parse(body)
         merges_to_review = merges_to_review.flat(1)
-        res.render('group', {groups: require('../config/group'), selected_group: req.params.group_identifier, merge_requests: merges_to_review})
+        res.render('group', {groups: require('../config/group'), rag_states: require('../config/rag'), selected_group: req.params.group_identifier, merge_requests: merges_to_review})
       }
     })
 })

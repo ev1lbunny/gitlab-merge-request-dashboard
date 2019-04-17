@@ -9,6 +9,8 @@ Clone the repository to your local machine.
 Open the src/config/app.json file and populate it with your environment arguments for base gitlab url and token etc.
     Config is split by runtime env and defaults to DEV if none is specified. TEST config is used during the test suite run.
     Prod and Nonprod are not required for actual running but it is advised to separate out config by environment.
+
+As an example;
 ```
 {
     "dev": {
@@ -39,6 +41,33 @@ Open the src/config/app.json file and populate it with your environment argument
 ```
 
 Open the src/config/group.json file and setup the information about the groups you wish to see the merge requests for.
+
+As an example;
+```
+ {
+     "ids": [
+        "1234",
+        "5678",
+        "9012"
+     ],
+     "names": [
+        "some-group",
+        "some-other-group",
+        "a-different-group"
+     ]
+ }
+```
+
+If you wish to specify your own RAG config for when to change status from green to amber to ref (defaul is older than 3days = amber, older than 5days = red)
+Open the src/config/rag.json file and setup the information about the amber and red boundries you wish to use. Use values in days.
+
+As an example;
+```
+{
+        "amber": 3,
+        "red": 5
+}
+```
 
 ### Prerequisites using docker
 
