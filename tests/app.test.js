@@ -1,11 +1,26 @@
 const request = require('supertest')
 const app = require('../src/app')
 
+const mockRequest = (req, group) => {
+    return {
+        req: { groups: require('../config/group'), selected_group: group, merge_requests: require() },
+    }
+}
+
+const mockResponse = () => {
+    const res = {}
+        res.status = jest.fn().mockReturnValue(res)
+        res.json = jest.fn().mockReturnValue(res)
+    return res
+}
+
+
+
 describe("Testing app base routes", () => {
     describe("routes: /", () => {
         test("GET should respond as expected", async () => {
             const response = await request(app)
-            .get("/")
+                .get("/")
             expect(response.status).toEqual(200)
             expect(response.type).toEqual("text/html")
             expect(response.text).toContain("GitLab Merge Dashboard")
@@ -15,7 +30,7 @@ describe("Testing app base routes", () => {
     describe("routes: /health", () => {
         test("GET should respond as expected", async () => {
             const response = await request(app)
-            .get("/health")
+                .get("/health")
             expect(response.status).toEqual(501)
             expect(response.type).toEqual("text/html")
             expect(response.text).toBeDefined()
@@ -25,10 +40,11 @@ describe("Testing app base routes", () => {
     describe("routes: /config", () => {
         test("GET should respond as expected", async () => {
             const response = await request(app)
-            .get("/config")
+                .get("/config")
             expect(response.status).toEqual(501)
             expect(response.type).toEqual("text/html")
             expect(response.text).toBeDefined()
         })
     })
+
 })

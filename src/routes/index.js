@@ -10,7 +10,7 @@ index_router.get('/', (req, res) => {
 })
 
 index_router.get('/group/:group_identifier', (req, res) => {
-  request.get("http://localhost:3000/gitlab/merge_requests_by_group/"+req.params.group_identifier, 
+  request.get("http://localhost:"+global.gConfig.port+"/gitlab/merge_requests_by_group/"+req.params.group_identifier, 
     function(error, response, body){
       merges_to_review = JSON.parse(body)
       merges_to_review = merges_to_review.flat(1)
