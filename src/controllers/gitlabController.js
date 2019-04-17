@@ -1,5 +1,5 @@
-/*eslint no-undef: "warn"*/
-/*eslint no-unused-vars: "warn"*/
+/*eslint no-undef: "off"*/
+/*eslint no-unused-vars: "off"*/
 
 const request_p = require('request-promise')
 
