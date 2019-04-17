@@ -25,7 +25,7 @@ morgan.token('id', function getId(req) {
 var loggerFormat = ':id [:date[web]]" ~ :method :url" :status ~ :response-time ms ~ :remote-addr';
 
 /* App Setup */
-app.use(addRequestId);
+app.use(addRequestId)
 app.set('view engine', 'pug')
 app.use(morgan(loggerFormat, {
   skip: function (req, res) {
