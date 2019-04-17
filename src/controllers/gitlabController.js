@@ -31,7 +31,8 @@ exports.merge_requests_by_project_id = function (req, res) {
     method: 'GET',
     headers: {"PRIVATE-TOKEN": global.gConfig.gitlab_token},
     rejectUnauthorized: false,
-    resolveWithFullResponse: true
+    resolveWithFullResponse: true,
+    json: true
   }
 
   request_p(opts)
@@ -51,7 +52,8 @@ exports.group_by_identifier = function(req, res) {
     method: 'GET',
     headers: {"PRIVATE-TOKEN": global.gConfig.gitlab_token},
     rejectUnauthorized: false,
-    resolveWithFullResponse: true
+    resolveWithFullResponse: true,
+    json: true
   }
 
   request_p(opts)

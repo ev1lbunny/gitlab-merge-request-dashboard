@@ -12,9 +12,13 @@ index_router.get('/', (req, res) => {
 index_router.get('/group/:group_identifier', (req, res) => {
   request.get("http://localhost:"+global.gConfig.port+"/gitlab/merge_requests_by_group/"+req.params.group_identifier, 
     function(error, response, body){
-      merges_to_review = JSON.parse(body)
-      merges_to_review = merges_to_review.flat(1)
-      res.render('group', {groups: require('../config/group'), selected_group: req.params.group_identifier, merge_requests: merges_to_review})
+      if (error) {
+        handleError(error, res)
+      } else {
+        merges_to_review = JSON.parse(body)
+        merges_to_review = merges_to_review.flat(1)
+        res.render('group', {groups: require('../config/group'), selected_group: req.params.group_identifier, merge_requests: merges_to_review})
+      }
     })
 })
   
@@ -35,5 +39,17 @@ index_router.get('/health', (req, res) => {
 index_router.get('/favicon.ico', (req, res) => {
   res.status(204)
 })
+
+function handleError(err, res) {
+  if (err.response) {
+    res
+      .status(err.response.statusCode)
+      .send(err.response.body)
+  } else {
+    res
+      .status(500)
+      .send("FATAL UNHANDLED ERROR. UNABLE TO RECOVER: "+err)
+  }
+}
 
 module.exports = index_router
