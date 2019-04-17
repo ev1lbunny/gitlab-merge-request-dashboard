@@ -1,20 +1,6 @@
 const request = require('supertest')
 const app = require('../src/app')
-
-const mockRequest = (req, group) => {
-    return {
-        req: { groups: require('../config/group'), selected_group: group, merge_requests: require() },
-    }
-}
-
-const mockResponse = () => {
-    const res = {}
-        res.status = jest.fn().mockReturnValue(res)
-        res.json = jest.fn().mockReturnValue(res)
-    return res
-}
-
-
+const groups = require('../src/config/group')
 
 describe("Testing app base routes", () => {
     describe("routes: /", () => {
@@ -23,6 +9,7 @@ describe("Testing app base routes", () => {
                 .get("/")
             expect(response.status).toEqual(200)
             expect(response.type).toEqual("text/html")
+            expect(response.text).toBeDefined()
             expect(response.text).toContain("GitLab Merge Dashboard")
         })
     })
@@ -46,5 +33,20 @@ describe("Testing app base routes", () => {
             expect(response.text).toBeDefined()
         })
     })
+
+    describe("routes: /group/:group_identifier", () => {
+        test("GET should respond as expected for valid group of: "+groups.names[0], async () => {
+            const response = await request(app)
+                .get("/group/"+groups.names[0])
+            expect(response.status).toEqual(200)
+            expect(response.type).toEqual("text/html")
+            expect(response.text).toBeDefined()
+        })
+    })
+
+})
+
+describe("Testing app gitlab routes", () => {
+
 
 })
