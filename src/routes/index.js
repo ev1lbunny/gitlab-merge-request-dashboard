@@ -1,9 +1,9 @@
 /*eslint no-undef: "off"*/
 /*eslint no-unused-vars: "off"*/
 
-var express = require('express')
-var request = require('request')
-var index_router = express.Router()
+var express = require('express');
+var request = require('request');
+var index_router = express.Router();
 
 index_router.get('/', (req, res) => {
   res.render('home', {groups: require('../config/group')})
