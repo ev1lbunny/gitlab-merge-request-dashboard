@@ -52,7 +52,7 @@ const environmentConfig = mergedConfig[environment]
 const finalConfig = environmentConfig
 global.gConfig = finalConfig
 
-console.debug("Config From Environment: " + JSON.stringify(configFromEnv, undefined, 4))
+
 
 /* Setup Morgen use tokens */
 morgan.token('id', function getId(req) {
