@@ -58,14 +58,15 @@ As an example;
  }
 ```
 
-If you wish to specify your own RAG config for when to change status from green to amber to red (default is older than 3days = amber, older than 5days = red)
-Open the src/config/rag.json file and setup the information about the amber and red boundries you wish to use. Use values in days.
+If you wish to specify your own RAG config for when to change status from green to amber to red (default is older than 12hours = amber, older than 24hours = red, with a recent change within the last 2 hours showing as updated recently)
+Open the src/config/rag.json file and setup the information about the recent updates within, and then the amber and red boundries you wish to use. Use values in hours.
 
 As an example;
 ```
 {
-        "amber": 3,
-        "red": 5
+        "recent": 3,
+        "amber": 12,
+        "red": 24
 }
 ```
 

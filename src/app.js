@@ -1,3 +1,6 @@
+/*eslint no-undef: "off"*/
+/*eslint no-unused-vars: "off"*/
+
 /* Application Requirements */
 const express = require('express')
 const app = express()
@@ -18,7 +21,7 @@ global.gConfig = finalConfig;
 
 /* Setup Morgen use tokens */
 morgan.token('id', function getId(req) {
-  return req.id
+    return req.id
 });
 
 /* Logger Setup */
@@ -28,16 +31,16 @@ var loggerFormat = ':id [:date[web]]" ~ :method :url" :status ~ :response-time m
 app.use(addRequestId)
 app.set('view engine', 'pug')
 app.use(morgan(loggerFormat, {
-  skip: function (req, res) {
-      return res.statusCode < 400
-  },
-  stream: process.stderr
+    skip: function(req, res) {
+        return res.statusCode < 400
+    },
+    stream: process.stderr
 }))
 app.use(morgan(loggerFormat, {
-  skip: function (req, res) {
-      return res.statusCode >= 400
-  },
-  stream: process.stdout
+    skip: function(req, res) {
+        return res.statusCode >= 400
+    },
+    stream: process.stdout
 }))
 
 /* Configured Routes */
