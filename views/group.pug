@@ -10,7 +10,7 @@ block content
 			th Repository
 			th(style="width: 200px") Created At
 			th(style="width: 200px") Last Updated *
-			th(style="width: 150px") Current State
+			th(style="width: 200px") Current State
 			th Discussion Count
 			th Gitlab Merge Status
 			th Raised By
@@ -129,15 +129,15 @@ block content
 									a(href=mr.author.web_url) #{mr.author.name}
 
 		h4 Key:
-		table(style="width: 250px")#key.table.table-hover.table-striped.table-bordered
+		table(style="width: 500px")#key.table.table-hover.table-striped.table-bordered
 			th Meanings
 			tr.info
-				td.key Recently Updated MR
+				td.key Recently Updated MR within the last #{(rag_states.recent)} hours
 			tr.success
-				td.key New MR created
+				td.key New MR created within the last #{(rag_states.recent)} hours
 			tr.warning
-				td.key MR has been open a while
+				td.key MR has been open for longer than #{(rag_states.amber)} hours
 			tr.danger
-				td.key Old MR Priorotise or Close
+				td.key MR has been open longer than #{(rag_states.red)} hours. PRIORITISE OR CLOSE
 			tr
-				td.key Conflicted MR (Needs Work)
+				td.key CRITICAL, Conflicted MR, DO NOT MERGE
