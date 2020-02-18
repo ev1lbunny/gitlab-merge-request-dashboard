@@ -128,6 +128,22 @@ Express App running → PORT 3000
 
 *NB. Where the displayed config matches the config you defined in the app.json config file.
 
+### Environment Variables
+
+Anything in `app.json` can be overwritten with environment variables, the format of:
+
+```
+MRDASH_<ENV>_<KET>
+```
+
+Example:
+
+```
+MRDASH_DEV_GITLAB_TOKEN=aSp3c1alT0k3n
+MRDASH_DEV_GITLAB_BASE_URI=https://somegitlab.testinstance.com
+MRDASH_DEV_PORT=3100
+```
+
 ## Running the tests
 
 Full test suite can be run simply using;
