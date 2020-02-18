@@ -127,3 +127,17 @@ block content
 								td.merge_status #{mr.merge_status}
 								td.author.name
 									a(href=mr.author.web_url) #{mr.author.name}
+
+		h4 Key:
+		table(style="width: 250px")#key.table.table-hover.table-striped.table-bordered
+			th Meanings
+			tr.info
+				td.key Recently Updated MR
+			tr.success
+				td.key New MR created
+			tr.warning
+				td.key MR has been open a while
+			tr.danger
+				td.key Old MR Priorotise or Close
+			tr
+				td.key Conflicted MR (Needs Work)
