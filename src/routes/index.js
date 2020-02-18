@@ -1,5 +1,6 @@
 /*eslint no-undef: "off"*/
 /*eslint no-unused-vars: "off"*/
+/*eslint console: "off"*/
 
 var express = require('express');
 var request = require('request');
@@ -19,6 +20,7 @@ index_router.get('/group/:group_identifier', (req, res) => {
             } else {
                 merges_to_review = JSON.parse(body)
                 merges_to_review = merges_to_review.flat(1)
+                merges_to_review = merges_to_review.sort(predicateBy("updated_at"))
                 res.render('group', {
                     groups: require('../config/group'),
                     rag_states: require('../config/rag'),
@@ -56,6 +58,17 @@ function handleError(err, res) {
         res
             .status(500)
             .send("FATAL UNHANDLED ERROR. UNABLE TO RECOVER: " + err)
+    }
+}
+
+function predicateBy(prop) {
+    return function(a, b) {
+        if (a[prop] > b[prop]) {
+            return -1;
+        } else if (a[prop] < b[prop]) {
+            return 1;
+        }
+        return 0;
     }
 }
 
