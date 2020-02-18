@@ -4,7 +4,6 @@
   "description": "Dashboard to show outstanding MR's & PR's for known gitlab project groups",
   "main": "app.js",
   "scripts": {
-    "prepare": "eslint --init",
     "test": "js-beautify -r ./src/**/*.js ./tests/**/*.js ./src/*.js  && eslint ./src/**/*.js ./tests/**/*.js ./src/*.js && pug-lint ./views/home.pug ./views/menu.pug ./views/group.pug && npx jest",
     "test-coverage": "istanbul cover _jest —- -R spec",
     "start": "node ./src/server.js"
