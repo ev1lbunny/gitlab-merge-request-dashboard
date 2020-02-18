@@ -28,10 +28,65 @@ block content
 					- var url_no_domain = mr.web_url.substr(mr.web_url.indexOf(selected_group)+selected_group.length+1)
 					- var project_name = url_no_domain.substr(0, url_no_domain.indexOf("/"))
 					- var project_url = mr.web_url.substr(0, mr.web_url.indexOf("/merge_requests"))
-				
-					if updated_date > last_few_hrs
-						if created_date < last_few_hrs
-							tr.info(class=mr)
+
+
+					if has_conflicts
+						tr(class=mr style="color: #aaa")
+							td.title
+								a(href=mr.web_url style="color: #aaa") !!! #{mr.title} !!!
+							td.repo #{project_name}
+							td.created_at #{mr.created_at}
+							td.updated_at #{mr.updated_at}
+							td.state !!! CONFLICTS !!! 
+							td.author.name #{mr.author.name}
+					else
+						if updated_date > last_few_hrs
+							if created_date < last_few_hrs
+								tr.info(class=mr)
+									td.title 
+										a(href=mr.web_url) #{mr.title}
+									td.repo 
+										a(href=project_url) #{project_name}
+									td.created_at #{mr.created_at}
+									td.updated_at #{mr.updated_at}
+									td.state #{mr.state} 
+									td.author.name
+										a(href=mr.author.web_url) #{mr.author.name}
+							else
+								tr.success(class=mr)
+									td.title 
+										a(href=mr.web_url) #{mr.title}
+									td.repo 
+										a(href=project_url) #{project_name}
+									td.created_at #{mr.created_at}
+									td.updated_at #{mr.updated_at}
+									td.state #{mr.state} 
+									td.author.name
+										a(href=mr.author.web_url) #{mr.author.name}						
+						else if created_date < red
+							tr.danger(class=mr)
+								td.title 
+									a(href=mr.web_url) #{mr.title}
+								td.repo 
+									a(href=project_url) #{project_name}
+								td.created_at #{mr.created_at}
+								td.updated_at #{mr.updated_at}
+								td.state #{mr.state} 
+								td.author.name
+									a(href=mr.author.web_url) #{mr.author.name}
+						else if created_date < amber
+							tr.warning(class=mr)
+								td.title 
+									a(href=mr.web_url) #{mr.title}
+								td.repo 
+									a(href=project_url) #{project_name}
+								td.created_at #{mr.created_at}
+								td.updated_at #{mr.updated_at}
+								td.state #{mr.state} 
+								td.author.name
+									a(href=mr.author.web_url) #{mr.author.name}			
+						else if created_date < green
+							tr.success(class=mr)
 								td.title 
 									a(href=mr.web_url) #{mr.title}
 								td.repo 
@@ -42,7 +97,7 @@ block content
 								td.author.name
 									a(href=mr.author.web_url) #{mr.author.name}
 						else
-							tr.success(class=mr)
+							tr(class=mr)
 								td.title 
 									a(href=mr.web_url) #{mr.title}
 								td.repo 
@@ -51,48 +106,4 @@ block content
 								td.updated_at #{mr.updated_at}
 								td.state #{mr.state} 
 								td.author.name
-									a(href=mr.author.web_url) #{mr.author.name}						
-					else if created_date < red
-						tr.danger(class=mr)
-							td.title 
-								a(href=mr.web_url) #{mr.title}
-							td.repo 
-								a(href=project_url) #{project_name}
-							td.created_at #{mr.created_at}
-							td.updated_at #{mr.updated_at}
-							td.state #{mr.state} 
-							td.author.name
-								a(href=mr.author.web_url) #{mr.author.name}
-					else if created_date < amber
-						tr.warning(class=mr)
-							td.title 
-								a(href=mr.web_url) #{mr.title}
-							td.repo 
-								a(href=project_url) #{project_name}
-							td.created_at #{mr.created_at}
-							td.updated_at #{mr.updated_at}
-							td.state #{mr.state} 
-							td.author.name
-								a(href=mr.author.web_url) #{mr.author.name}			
-					else if created_date < green
-						tr.success(class=mr)
-							td.title 
-								a(href=mr.web_url) #{mr.title}
-							td.repo 
-								a(href=project_url) #{project_name}
-							td.created_at #{mr.created_at}
-							td.updated_at #{mr.updated_at}
-							td.state #{mr.state} 
-							td.author.name
-								a(href=mr.author.web_url) #{mr.author.name}
-					else
-						tr(class=mr)
-							td.title 
-								a(href=mr.web_url) #{mr.title}
-							td.repo 
-								a(href=project_url) #{project_name}
-							td.created_at #{mr.created_at}
-							td.updated_at #{mr.updated_at}
-							td.state #{mr.state} 
-							td.author.name
-								a(href=mr.author.web_url) #{mr.author.name}
+									a(href=mr.author.web_url) #{mr.author.name}
