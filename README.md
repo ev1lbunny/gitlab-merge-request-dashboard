@@ -6,7 +6,7 @@ Uses: nodejs/expressjs/pug templates and promises
 ## Getting Started
 
 Clone the repository to your local machine.
-Copy `src/config/app.json.dist` to `src/config/app.json` and populate it with your environment arguments for base gitlab url and token etc.
+Edit `src/config/app.json` and populate it with your environment arguments for base gitlab url and token etc.
     Config is split by runtime env and defaults to DEV if none is specified. TEST config is used during the test suite run.
     Prod and Nonprod are not required for actual running but it is advised to separate out config by environment.
 
@@ -133,7 +133,7 @@ Express App running → PORT 3000
 Anything in `app.json` can be overwritten with environment variables, the format of:
 
 ```
-MRDASH_<ENV>_<KET>
+MRDASH_<ENV>_<KEY>
 ```
 
 Example:
