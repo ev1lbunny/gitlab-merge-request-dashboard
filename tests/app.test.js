@@ -1,5 +1,10 @@
 /*eslint no-undef: "off"*/
 /*eslint no-unused-vars: "off"*/
+/*eslint no-console: ["error", { allow: [ "debug", "log"] }] */
+
+//setting environment variables here for later testing 
+//as i'm not sure how else todo this. 
+process.env.MRDASH_TEST_GITLAB_BASE_URI = 'http://test'
 
 const request = require('supertest')
 const app = require('../src/app')
@@ -117,6 +122,18 @@ describe("Testing app gitlab routes used for obtaining data from gitlab", () => 
             expect(response.status).toEqual(200)
             expect(response.type).toEqual("application/json")
             expect(response.text).toBeDefined()
+        })
+    })
+
+})
+
+describe("Testing environment overrides.", () => {
+    describe("routes: /config/", () => {
+        test("MRDASH_TEST_GITLAB_BASE_URI should set override gitlab_base_uri for the specific enfironment.", async () => {
+
+            const response = await request(app)
+                .get("/config")
+            expect(JSON.parse(response.text)['gitlab_base_uri']).toEqual("http://test")
         })
     })
 })

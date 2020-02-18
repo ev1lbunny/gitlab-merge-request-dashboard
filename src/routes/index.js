@@ -32,10 +32,13 @@ index_router.get('/group/:group_identifier', (req, res) => {
 })
 
 index_router.get('/config', (req, res) => {
-    //res.json(global.gConfig)
-    res
-        .status(501)
-        .send("Not implemented yet")
+    if (global.gConfig.config_id == "TEST") {
+        res.json(global.gConfig)
+    } else {
+        res
+            .status(501)
+            .send("Not implemented yet")
+    }
 })
 
 index_router.get('/health', (req, res) => {
