@@ -32,7 +32,7 @@
     "express-request-id": "1.4.1",
     "fetch": "1.1.0",
     "jest": "24.5.0",
-    "jquery": "3.3.1",
+    "jquery": "3.4.0",
     "js-beautify": "1.10.3",
     "lodash": "4.17.11",
     "mocha": "6.1.3",
