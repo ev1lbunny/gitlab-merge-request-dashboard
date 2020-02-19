@@ -4,12 +4,14 @@
 
 /* Application Requirements */
 const express = require('express')
+const apicache = require('apicache')
 const app = express()
 const addRequestId = require('express-request-id')()
 const morgan = require('morgan')
 const index = require('./routes/index')
 const gitlab = require('./routes/gitlab')
 const path = require('path')
+const cache = apicache.middleware
 
 /* Config Loading Requirements */
 const _ = require('lodash')
@@ -64,6 +66,7 @@ morgan.token('id', function getId(req) {
 var loggerFormat = ':id [:date[web]]" ~ :method :url" :status ~ :response-time ms ~ :remote-addr';
 
 /* App Setup */
+app.use(cache('5 minutes'))
 app.use(addRequestId)
 app.set('view engine', 'pug')
 app.use(morgan(loggerFormat, {
