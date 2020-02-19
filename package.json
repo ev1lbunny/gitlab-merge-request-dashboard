@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/kmalkin/gitlab-merge-request-dashboard#readme",
   "dependencies": {
+    "apicache": "1.5.3",
     "bootstrap": "4.3.1",
     "express": "4.16.4",
     "express-request-id": "1.4.1",
