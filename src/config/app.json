@@ -1,24 +1,26 @@
-    "dev": {
-        "config_id": "DEV",
-        "port": 3000,
-        "gitlab_token": "",
-        "gitlab_base_uri": ""
-    },
-    "nonprod": {
-        "config_id": "NONPROD",
-        "port": 3000,
-        "gitlab_token": "",
-        "gitlab_base_uri": ""
-    },
-    "prod": {
-        "config_id": "PROD",
-        "port": 3000,
-        "gitlab_token": "",
-        "gitlab_base_uri": ""
-    },
-    "test": {
-        "config_id": "TEST",
-        "port": 3000,
-        "gitlab_token": "",
-        "gitlab_base_uri": ""
-    }
+{
+  "dev": {
+    "config_id": "DEV",
+    "port": 3000,
+    "gitlab_token": "",
+    "gitlab_base_uri": ""
+  },
+  "nonprod": {
+    "config_id": "NONPROD",
+    "port": 3000,
+    "gitlab_token": "",
+    "gitlab_base_uri": ""
+  },
+  "prod": {
+    "config_id": "PROD",
+    "port": 3000,
+    "gitlab_token": "",
+    "gitlab_base_uri": ""
+  },
+  "test": {
+    "config_id": "TEST",
+    "port": 3000,
+    "gitlab_token": "",
+    "gitlab_base_uri": ""
+  }
+}
