@@ -1,0 +1,14 @@
+{
+    "ids": [
+        "1493",
+        "1662",
+        "1739"
+    ],
+    "names": [
+        "terraform_modules",
+        "cloud-services",
+        "channel-infra",
+        "aws-service-accounts",
+        "cloud-services-patterns"
+    ]
+}

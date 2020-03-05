@@ -1,0 +1,143 @@
+extends menu
+
+block content
+	
+	.container-fluid
+	.jumbotron
+		h2 Current Merge Requests for #{selected_group}
+		table#merge_requests_tid.table.table-hover.table-striped.table-bordered
+			th Merge Request
+			th Repository
+			th(style="width: 200px") Created At
+			th(style="width: 200px") Last Updated *
+			th(style="width: 200px") Current State
+			th Discussion Count
+			th Gitlab Merge Status
+			th Raised By
+
+			if merge_requests
+				for mr in merge_requests
+					- var created_date = new Date(mr.created_at).getTime()
+					- var updated_date = new Date(mr.updated_at).getTime()
+					- var has_conflicts = mr.has_conflicts
+					- var overall_state = []					
+					- var today = new Date()
+					- var green = new Date().getTime()
+					- var amber = new Date().setTime(green - (rag_states.amber*60*60*1000))
+					- var red = new Date().setTime(green - (rag_states.red*60*60*1000))
+					- var last_few_hrs = new Date().setTime(green - (rag_states.recent*60*60*1000))
+
+					- var url_no_domain = mr.web_url.substr(mr.web_url.indexOf(selected_group)+selected_group.length+1)
+					- var project_name = url_no_domain.substr(0, url_no_domain.indexOf("/"))
+					- var project_url = mr.web_url.substr(0, mr.web_url.indexOf("/merge_requests"))
+
+					if mr.labels.length > 0
+						- var overall_state = mr.labels
+					else
+						- var overall_state = mr.state
+
+					if has_conflicts
+						tr(class=mr style="color: #aaa")
+							td.title
+								a(href=mr.web_url style="color: #aaa") !!! #{mr.title} !!!
+							td.repo #{project_name}
+							td.created_at #{mr.created_at}
+							td.updated_at #{mr.updated_at}
+							td.state !!! CONFLICTS !!!
+							td.user_notes_count #{mr.user_notes_count}
+							td.merge_status #{mr.merge_status}
+							td.author.name #{mr.author.name}
+					else
+						if updated_date > last_few_hrs
+							if created_date < last_few_hrs
+								tr.info(class=mr)
+									td.title 
+										a(href=mr.web_url) #{mr.title}
+									td.repo 
+										a(href=project_url) #{project_name}
+									td.created_at #{mr.created_at}
+									td.updated_at #{mr.updated_at}
+									td.state #{overall_state}
+									td.user_notes_count #{mr.user_notes_count}
+									td.merge_status #{mr.merge_status}
+									td.author.name
+										a(href=mr.author.web_url) #{mr.author.name}
+							else
+								tr.success(class=mr)
+									td.title 
+										a(href=mr.web_url) #{mr.title}
+									td.repo 
+										a(href=project_url) #{project_name}
+									td.created_at #{mr.created_at}
+									td.updated_at #{mr.updated_at}
+									td.state #{overall_state}
+									td.user_notes_count #{mr.user_notes_count}
+									td.merge_status #{mr.merge_status}
+									td.author.name
+										a(href=mr.author.web_url) #{mr.author.name}						
+						else if created_date < red
+							tr.danger(class=mr)
+								td.title 
+									a(href=mr.web_url) #{mr.title}
+								td.repo 
+									a(href=project_url) #{project_name}
+								td.created_at #{mr.created_at}
+								td.updated_at #{mr.updated_at}
+								td.state #{overall_state}
+								td.user_notes_count #{mr.user_notes_count}
+								td.merge_status #{mr.merge_status}
+								td.author.name
+									a(href=mr.author.web_url) #{mr.author.name}
+						else if created_date < amber
+							tr.warning(class=mr)
+								td.title 
+									a(href=mr.web_url) #{mr.title}
+								td.repo 
+									a(href=project_url) #{project_name}
+								td.created_at #{mr.created_at}
+								td.updated_at #{mr.updated_at}
+								td.state #{overall_state}
+								td.user_notes_count #{mr.user_notes_count}
+								td.merge_status #{mr.merge_status}
+								td.author.name
+									a(href=mr.author.web_url) #{mr.author.name}			
+						else if created_date < green
+							tr.success(class=mr)
+								td.title 
+									a(href=mr.web_url) #{mr.title}
+								td.repo 
+									a(href=project_url) #{project_name}
+								td.created_at #{mr.created_at}
+								td.updated_at #{mr.updated_at}
+								td.state #{overall_state}
+								td.user_notes_count #{mr.user_notes_count}
+								td.merge_status #{mr.merge_status}
+								td.author.name
+									a(href=mr.author.web_url) #{mr.author.name}
+						else
+							tr(class=mr)
+								td.title 
+									a(href=mr.web_url) #{mr.title}
+								td.repo 
+									a(href=project_url) #{project_name}
+								td.created_at #{mr.created_at}
+								td.updated_at #{mr.updated_at}
+								td.state #{overall_state}
+								td.user_notes_count #{mr.user_notes_count}
+								td.merge_status #{mr.merge_status}
+								td.author.name
+									a(href=mr.author.web_url) #{mr.author.name}
+
+		h4 Key:
+		table(style="width: 500px")#key.table.table-hover.table-striped.table-bordered
+			th Meanings
+			tr.info
+				td.key Recently Updated MR within the last #{(rag_states.recent)} hours
+			tr.success
+				td.key New MR created within the last #{(rag_states.recent)} hours
+			tr.warning
+				td.key MR has been open for longer than #{(rag_states.amber)} hours
+			tr.danger
+				td.key MR has been open longer than #{(rag_states.red)} hours. PRIORITISE OR CLOSE
+			tr
+				td.key CRITICAL, Conflicted MR, DO NOT MERGE
