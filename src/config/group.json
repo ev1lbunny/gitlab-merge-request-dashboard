@@ -1,14 +1,11 @@
 {
-    "ids": [
-        "1493",
-        "1662",
-        "1739"
+    "core_groups": [
+        {"name":"group1", "id":"12345"},
+        {"name":"group2", "id":"67890"}
     ],
-    "names": [
-        "terraform_modules",
-        "cloud-services",
-        "channel-infra",
-        "aws-service-accounts",
-        "cloud-services-patterns"
+
+    "other_groups": [
+        {"name":"group3", "id":"1111111"},
+        {"name":"group4", "id":"33232323"}
     ]
 }
