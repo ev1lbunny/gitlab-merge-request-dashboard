@@ -17,25 +17,29 @@ As an example;
         "config_id": "DEV",
         "port": 3000,
         "gitlab_token": "aSp3c1alT0k3n",
-        "gitlab_base_uri": "https://somegitlab.devinstance.com"
+        "gitlab_base_uri": "https://somegitlab.devinstance.com",
+        "cache_time_limit": 10000
     },
     "nonprod": {
         "config_id": "NONPROD",
         "port": 3001,
         "gitlab_token": "",
-        "gitlab_base_uri": ""
+        "gitlab_base_uri": "",
+        "cache_time_limit": 10000
     },
     "prod": {
         "config_id": "PROD",
         "port": 3002,
         "gitlab_token": "",
-        "gitlab_base_uri": ""
+        "gitlab_base_uri": "",
+        "cache_time_limit": 10000
     },
     "test": {
         "config_id": "TEST",
         "port": 3003,
         "gitlab_token": "aSp3c1alT0k3n",
-        "gitlab_base_uri": "https://somegitlab.testinstance.com"
+        "gitlab_base_uri": "https://somegitlab.testinstance.com",
+        "cache_time_limit": 10000
     }
 }
 ```
@@ -44,18 +48,17 @@ Open the src/config/group.json file and setup the information about the groups y
 
 As an example;
 ```
- {
-     "ids": [
-        "1234",
-        "5678",
-        "9012"
-     ],
-     "names": [
-        "some-group",
-        "some-other-group",
-        "a-different-group"
-     ]
- }
+{
+    "core_groups": [
+        {"name":"group1", "id":"12345"},
+        {"name":"group2", "id":"67890"}
+    ],
+
+    "other_groups": [
+        {"name":"group3", "id":"1111111"},
+        {"name":"group4", "id":"33232323"}
+    ]
+}
 ```
 
 If you wish to specify your own RAG config for when to change status from green to amber to red (default is older than 12hours = amber, older than 24hours = red, with a recent change within the last 2 hours showing as updated recently)
