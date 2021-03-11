@@ -2,8 +2,9 @@
   "dev": {
     "config_id": "DEV",
     "port": 3000,
-    "gitlab_token": "",
-    "gitlab_base_uri": ""
+    "gitlab_token": "9vM_7nPJUnud-UrihSff",
+    "gitlab_base_uri": "https://gitlab.com",
+    "cache_time_limit": 10000
   },
   "nonprod": {
     "config_id": "NONPROD",
@@ -20,7 +21,7 @@
   "test": {
     "config_id": "TEST",
     "port": 3000,
-    "gitlab_token": "",
-    "gitlab_base_uri": ""
+    "gitlab_token": "9vM_7nPJUnud-UrihSff",
+    "gitlab_base_uri": "https://gitlab.com"
   }
 }

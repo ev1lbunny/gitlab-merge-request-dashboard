@@ -19,11 +19,14 @@ block body
 						ul.dropdown-menu(role='menu')
 							li.divider
 							li.dropdown-header Core Groups
-							for group in groups.names
+							for group in groups.core_groups
 								li
-									a(href="/group/"+group) #{group}
+									a(href="/group/"+group.id+"/"+group.name) #{group.name}
 							li.divider
 							li.dropdown-header Other Groups
+							for group in groups.other_groups
+								li
+									a(href="/group/"+group.id+"/"+group.name) #{group.name}
 							li.divider
 
 

@@ -41,16 +41,6 @@ describe("Testing app base routes used for rendering PUG templates", () => {
 })
 
 describe("Testing app gitlab routes used for obtaining data from gitlab", () => {
-    describe("routes: /gitlab/projects/" + groups.names[0], () => {
-        test("GET should respond as expected successfully reading from app config using a name", async () => {
-            const response = await request(app)
-                .get("/gitlab/projects/" + groups.names[0])
-            expect(response.status).toEqual(200)
-            expect(response.type).toEqual("application/json")
-            expect(response.text).toBeDefined()
-        })
-    })
-
     describe("routes: /gitlab/stale_branch_check_by_project_id/" + projects.ids[0], () => {
         test("GET should respond as expected successfully reading from app config using an id", async () => {
             const response = await request(app)
@@ -61,60 +51,40 @@ describe("Testing app gitlab routes used for obtaining data from gitlab", () => 
         })
     })
 
-    describe("routes: /gitlab/merge_reqests_by_project/" + projects.ids[0], () => {
-        test("GET should respond as expected successfully reading from app config using an id", async () => {
-            const response = await request(app)
-                .get("/gitlab/merge_requests_by_project/" + projects.ids[0])
-            expect(response.status).toEqual(200)
-            expect(response.type).toEqual("application/json")
-            expect(response.text).toBeDefined()
-        })
-    })
-
-    describe("routes: /gitlab/group/" + groups.names[0], () => {
+    describe("routes: /gitlab/group/" + groups.groups[0].name, () => {
         test("GET should respond as expected successfully reading from app config using a name", async () => {
             const response = await request(app)
-                .get("/gitlab/group/" + groups.names[0])
+                .get("/gitlab/group/" + groups.groups[0].name)
             expect(response.status).toEqual(200)
             expect(response.type).toEqual("application/json")
             expect(response.text).toBeDefined()
         })
     })
 
-    describe("routes: /gitlab/merge_requests_by_group_id/" + groups.names[0], () => {
+    describe("routes: /gitlab/merge_requests_by_group_id/" + groups.groups[0].name, () => {
         test("GET should respond as expected successfully reading from app config using a name", async () => {
             const response = await request(app)
-                .get("/gitlab/merge_requests_by_group_id/" + groups.names[0])
+                .get("/gitlab/merge_requests_by_group_id/" + groups.groups[0].name)
             expect(response.status).toEqual(200)
             expect(response.type).toEqual("application/json")
             expect(response.text).toBeDefined()
         })
     })
 
-    describe("routes: /gitlab/projects/" + groups.ids[0], () => {
+    describe("routes: /gitlab/group/" + groups.groups[0].id, () => {
         test("GET should respond as expected successfully reading from app config using an id", async () => {
             const response = await request(app)
-                .get("/gitlab/projects/" + groups.ids[0])
+                .get("/gitlab/group/" + groups.groups[0].id)
             expect(response.status).toEqual(200)
             expect(response.type).toEqual("application/json")
             expect(response.text).toBeDefined()
         })
     })
 
-    describe("routes: /gitlab/group/" + groups.ids[0], () => {
+    describe("routes: /gitlab/merge_requests_by_group_id/" + groups.groups[0].id, () => {
         test("GET should respond as expected successfully reading from app config using an id", async () => {
             const response = await request(app)
-                .get("/gitlab/group/" + groups.ids[0])
-            expect(response.status).toEqual(200)
-            expect(response.type).toEqual("application/json")
-            expect(response.text).toBeDefined()
-        })
-    })
-
-    describe("routes: /gitlab/merge_requests_by_group_id/" + groups.ids[0], () => {
-        test("GET should respond as expected successfully reading from app config using an id", async () => {
-            const response = await request(app)
-                .get("/gitlab/merge_requests_by_group_id/" + groups.ids[0])
+                .get("/gitlab/merge_requests_by_group_id/" + groups.groups[0].id)
             expect(response.status).toEqual(200)
             expect(response.type).toEqual("application/json")
             expect(response.text).toBeDefined()
