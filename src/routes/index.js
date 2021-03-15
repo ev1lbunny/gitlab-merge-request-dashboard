@@ -12,8 +12,8 @@ index_router.get('/', (req, res) => {
     })
 })
 
-index_router.get('/group/:group_identifier', (req, res) => {
-    request.get("http://localhost:" + global.gConfig.port + "/gitlab/merge_requests_by_group/" + req.params.group_identifier,
+index_router.get('/group/:group_id/:group_name', (req, res) => {
+    request.get("http://localhost:" + global.gConfig.port + "/gitlab/merge_requests_by_group_id/" + req.params.group_id,
         function(error, response, body) {
             if (error) {
                 handleError(error, res)
@@ -24,7 +24,7 @@ index_router.get('/group/:group_identifier', (req, res) => {
                 res.render('group', {
                     groups: require('../config/group'),
                     rag_states: require('../config/rag'),
-                    selected_group: req.params.group_identifier,
+                    selected_group: req.params.group_name,
                     merge_requests: merges_to_review
                 })
             }
@@ -32,10 +32,13 @@ index_router.get('/group/:group_identifier', (req, res) => {
 })
 
 index_router.get('/config', (req, res) => {
-    //res.json(global.gConfig)
-    res
-        .status(501)
-        .send("Not implemented yet")
+    if (global.gConfig.config_id == "TEST") {
+        res.json(global.gConfig)
+    } else {
+        res
+            .status(501)
+            .send("Not implemented yet")
+    }
 })
 
 index_router.get('/health', (req, res) => {

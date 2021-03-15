@@ -1,12 +1,11 @@
 {
-    "ids": [
-        "1234",
-        "5678",
-        "9012"
+    "core_groups": [
+        {"name":"group1", "id":"12345"},
+        {"name":"group2", "id":"67890"}
     ],
-    "names": [
-        "some-group",
-        "some-other-group",
-        "a-different-group"
+
+    "other_groups": [
+        {"name":"group3", "id":"1111111"},
+        {"name":"group4", "id":"33232323"}
     ]
 }
