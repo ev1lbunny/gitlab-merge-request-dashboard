@@ -88,9 +88,9 @@ The assumption is that you not use docker but instead run the code locally via a
 
 ```
 npm -v    
-6.7.0
+7.6.0
 node -v                                                                           
-v11.12.0
+v15.11.0
 ```
 
 ### Installing & Running using Docker
@@ -99,7 +99,7 @@ After configuring all the properties for your environment/s. Simply run the foll
 
 ```
 docker build -t gitlab-dashboard .
-docker run -p HOST_PORT:CONTAINER_PORT -d gitlab-dashboard
+docker run -e "MRDASH_PROD_GITLAB_TOKEN=12345412314" -e "MRDASH_PROD_GITLAB_BASE_URI=https://gitlab.com" -e "MRDASH_PROD_PORT=3003" -p 3003:3003 -d gitlab-dashboard
 ```
 
 *NB. Where HOST_PORT is the port that you want to access the service on and CONTAINER_PORT is the port you defined in your app.json config file. Dockerfile by default only exposes the standard assumed ports 3000-3003. Change this if required
