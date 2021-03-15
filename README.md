@@ -106,7 +106,7 @@ docker run -e "MRDASH_PROD_GITLAB_TOKEN=12345412314" -e "MRDASH_PROD_GITLAB_BASE
 
 To access the logs should there be any issues, you can simply then run 
 
-docker logs <container_id>
+`docker logs <container_id>`
 
 
 ### Installing & Running using Node on localhost
