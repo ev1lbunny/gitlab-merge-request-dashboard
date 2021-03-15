@@ -3,24 +3,28 @@
     "config_id": "DEV",
     "port": 3000,
     "gitlab_token": "",
-    "gitlab_base_uri": ""
+    "gitlab_base_uri": "",
+    "cache_time_limit": 10000
   },
   "nonprod": {
     "config_id": "NONPROD",
     "port": 3000,
     "gitlab_token": "",
-    "gitlab_base_uri": ""
+    "gitlab_base_uri": "",
+    "cache_time_limit": 10000
   },
   "prod": {
     "config_id": "PROD",
     "port": 3000,
     "gitlab_token": "",
-    "gitlab_base_uri": ""
+    "gitlab_base_uri": "",
+    "cache_time_limit": 10000
   },
   "test": {
     "config_id": "TEST",
     "port": 3000,
     "gitlab_token": "",
-    "gitlab_base_uri": ""
+    "gitlab_base_uri": "",
+    "cache_time_limit": 10000
   }
 }

@@ -12,7 +12,7 @@ index_router.get('/', (req, res) => {
     })
 })
 
-index_router.get('/group/:group_id', (req, res) => {
+index_router.get('/group/:group_id/:group_name', (req, res) => {
     request.get("http://localhost:" + global.gConfig.port + "/gitlab/merge_requests_by_group_id/" + req.params.group_id,
         function(error, response, body) {
             if (error) {
@@ -24,7 +24,7 @@ index_router.get('/group/:group_id', (req, res) => {
                 res.render('group', {
                     groups: require('../config/group'),
                     rag_states: require('../config/rag'),
-                    selected_group: req.params.group_id,
+                    selected_group: req.params.group_name,
                     merge_requests: merges_to_review
                 })
             }
