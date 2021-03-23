@@ -4,27 +4,31 @@
     "port": 3000,
     "gitlab_token": "",
     "gitlab_base_uri": "",
-    "cache_time_limit": 10000
+    "cache_time_limit": 10000,
+    "proxy_address": "http://webproxy:3128"
   },
   "nonprod": {
     "config_id": "NONPROD",
     "port": 3000,
     "gitlab_token": "",
     "gitlab_base_uri": "",
-    "cache_time_limit": 10000
+    "cache_time_limit": 10000,
+    "proxy_address": "http://webproxy:3128"
   },
   "prod": {
     "config_id": "PROD",
     "port": 3000,
     "gitlab_token": "",
     "gitlab_base_uri": "",
-    "cache_time_limit": 10000
+    "cache_time_limit": 10000,
+    "proxy_address": "http://webproxy:3128"
   },
   "test": {
     "config_id": "TEST",
     "port": 3000,
     "gitlab_token": "",
     "gitlab_base_uri": "",
-    "cache_time_limit": 10000
+    "cache_time_limit": 10000,
+    "proxy_address": "http://webproxy:3128"
   }
 }

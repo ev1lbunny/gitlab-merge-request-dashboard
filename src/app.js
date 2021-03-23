@@ -4,6 +4,7 @@
 
 /* Application Requirements */
 const express = require('express')
+const proxy = require('express-http-proxy');
 const apicache = require('apicache')
 const app = express()
 const addRequestId = require('express-request-id')()
@@ -82,9 +83,10 @@ app.use(morgan(loggerFormat, {
     stream: process.stdout
 }))
 
-/* Configured Routes */
+/* Configured Routes */  
 app.use('/', index);
-app.use('/gitlab/', gitlab)
+app.use('/gitlab/', proxy(global.gConfig.proxy_address), gitlab)
+ /* app.use('/gitlab/', gitlab) */
 app.use("/public", express.static(path.join(__dirname, 'public')))
 
 module.exports = app

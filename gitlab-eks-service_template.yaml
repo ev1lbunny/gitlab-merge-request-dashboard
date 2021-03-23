@@ -10,19 +10,14 @@ spec:
     app: gitlab-merge-request-dashboard
   ports:
     - protocol: TCP
-      port:80 
-      targetPort: 80
-    - protocol: TCP
-      port: 443
-      targetPort: 443
-    - protocol: TCP
       port: 3003
       targetPort: 3003
+      name: merge-dash
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-deployment
+  name: gitlab-merge-request-dashboard
   namespace: merge-dash
   labels:
     app: gitlab-merge-request-dashboard
@@ -57,4 +52,6 @@ spec:
           - name: MRDASH_PROD_GITLAB_BASE_URI
             value: "https://gitlab.com"
           - name: MRDASH_PROD_PORT
-            value: "3003"
+            value: "1234"
+          - name: MRDASH_PROD_PROXY_ADDRESS
+            value: "http://aproxy:1234"
