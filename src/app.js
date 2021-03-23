@@ -85,8 +85,7 @@ app.use(morgan(loggerFormat, {
 
 /* Configured Routes */  
 app.use('/', index);
-app.use('/gitlab/', proxy(global.gConfig.proxy_address), gitlab)
- /* app.use('/gitlab/', gitlab) */
+app.use('/gitlab/', gitlab)
 app.use("/public", express.static(path.join(__dirname, 'public')))
 
 module.exports = app
