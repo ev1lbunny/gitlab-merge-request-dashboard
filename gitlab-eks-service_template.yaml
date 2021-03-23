@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: merge-dash
+  namespace: merge-dash
+  labels:
+    app: gitlab-merge-request-dashboard
+spec:
+  selector:
+    app: gitlab-merge-request-dashboard
+  ports:
+    - protocol: TCP
+      port:80 
+      targetPort: 80
+    - protocol: TCP
+      port: 443
+      targetPort: 443
+    - protocol: TCP
+      port: 3003
+      targetPort: 3003
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  namespace: merge-dash
+  labels:
+    app: gitlab-merge-request-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitlab-merge-request-dashboard
+  template:
+    metadata:
+      labels:
+        app: gitlab-merge-request-dashboard
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: beta.kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+                - arm64
+      containers:
+      - name: gitlab-mr-dash
+        image: imagelocation:latest
+        ports:
+        - containerPort: 3003
+        env:
+          - name: MRDASH_PROD_GITLAB_TOKEN
+            value: ""
+          - name: MRDASH_PROD_GITLAB_BASE_URI
+            value: "https://gitlab.com"
+          - name: MRDASH_PROD_PORT
+            value: "3003"
