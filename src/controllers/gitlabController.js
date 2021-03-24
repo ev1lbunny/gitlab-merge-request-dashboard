@@ -6,7 +6,7 @@ const request_p = require('request-promise')
 exports.stale_branch_check_by_project_id = function(req, res) {
     p_opts = {
         uri: global.gConfig.gitlab_base_uri + "/api/v4/projects/" + req.params.project_id + "/repository/branches?merged=true&per_page=1000",
-        proxy: global.gConfig.proxy_address, 
+        proxy: global.gConfig.proxy_address,
         method: 'GET',
         headers: {
             "PRIVATE-TOKEN": global.gConfig.gitlab_token
@@ -50,7 +50,7 @@ exports.stale_branch_check_by_project_id = function(req, res) {
 exports.group_by_group_id = function(req, res) {
     opts = {
         uri: global.gConfig.gitlab_base_uri + "/api/v4/groups/" + req.params.group_id,
-        proxy: global.gConfig.proxy_address, 
+        proxy: global.gConfig.proxy_address,
         method: 'GET',
         headers: {
             "PRIVATE-TOKEN": global.gConfig.gitlab_token
@@ -74,7 +74,7 @@ exports.group_by_group_id = function(req, res) {
 exports.merge_requests_by_group_id = function(req, res) {
     opts = {
         uri: global.gConfig.gitlab_base_uri + "/api/v4/groups/" + req.params.group_id + "/merge_requests?state=opened&per_page=1000",
-        proxy: global.gConfig.proxy_address, 
+        proxy: global.gConfig.proxy_address,
         method: 'GET',
         headers: {
             "PRIVATE-TOKEN": global.gConfig.gitlab_token

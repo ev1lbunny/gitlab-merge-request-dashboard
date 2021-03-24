@@ -87,9 +87,9 @@ Docker version 18.09.1, build 4c52b90
 The assumption is that you not use docker but instead run the code locally via a managed nodejs server
 
 ```
-npm -v    
+npm -v
 7.6.0
-node -v                                                                           
+node -v
 v15.11.0
 ```
 
@@ -104,7 +104,7 @@ docker run -e "MRDASH_PROD_GITLAB_TOKEN=12345412314" -e "MRDASH_PROD_GITLAB_BASE
 
 *NB. Where HOST_PORT is the port that you want to access the service on and CONTAINER_PORT is the port you defined in your app.json config file. Dockerfile by default only exposes the standard assumed ports 3000-3003. Change this if required
 
-To access the logs should there be any issues, you can simply then run 
+To access the logs should there be any issues, you can simply then run
 
 `docker logs <container_id>`
 
@@ -114,7 +114,7 @@ To access the logs should there be any issues, you can simply then run
 After configuring all the properties for your environment/s. Simply run the following;
 
 ```
- npm start  
+ npm start
 
 > gitlab-mr-dash@0.0.1 start somedir/gitlab-merge-request-dashboard
 > node ./src/server.js
@@ -155,7 +155,7 @@ NB. THESE ARE INTEGRATION TESTS TO HELP USERS CHECK THAT THEIR CONFIG WILL WORK 
 PLEASE ENSURE config is set for the TEST env. Once all tests pass then the test config will work for the app functions
 
 ```
-npm test 
+npm test
 
 
 > gitlab-mr-dash@0.0.1 test dir/gitlab-merge-request-dashboard
@@ -202,7 +202,7 @@ This will run ```eslint ./src/**/*.js && pug-lint ./views/index.pug && npx jest`
 
 ## Deployment
 
-Only thing that needs to be configured for deployment (assuming you have separted your properties into environments as suggested) is the node runtime env that matches the config you need to run it for. 
+Only thing that needs to be configured for deployment (assuming you have separted your properties into environments as suggested) is the node runtime env that matches the config you need to run it for.
 IE defaults to DEV but just set it to PROD etc if you need to swap env.
 
 ## Built With
@@ -213,7 +213,7 @@ IE defaults to DEV but just set it to PROD etc if you need to swap env.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags](https://github.com/kmalkin/gitlab-merge-request-dashboard/tags) on this repository. 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags](https://github.com/kmalkin/gitlab-merge-request-dashboard/tags) on this repository.
 
 ## Authors
 

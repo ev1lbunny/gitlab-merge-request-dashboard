@@ -95,10 +95,10 @@ describe("Testing app gitlab routes used for obtaining data from gitlab", () => 
 
 
 
-//Needs proper unit testing stubbed responses to accurately test properly 
+//Needs proper unit testing stubbed responses to accurately test properly
 //Tests are currently basically just int tests not unit tests.  mocks needed to do unit tests properly
-// //setting environment variables here for later testing 
-// //as i'm not sure how else todo this. 
+// //setting environment variables here for later testing
+// //as i'm not sure how else todo this.
 // process.env.MRDASH_TEST_GITLAB_BASE_URI = 'http://test'
 // describe("Testing environment overrides.", () => {
 //     describe("routes: /config/", () => {

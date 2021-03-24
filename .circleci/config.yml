@@ -1,4 +1,4 @@
-version: 2.1 
+version: 2.1
 
 workflows:
   version: 2
@@ -6,19 +6,19 @@ workflows:
     jobs:
       - test
 
-jobs: 
-  test: 
+jobs:
+  test:
     working_directory: ~/repo
     docker: # run the steps with Docker
       - image: circleci/node:12.4.0
       - image: gitlab/gitlab-ce
     environment:
-    steps: 
-      - checkout 
+    steps:
+      - checkout
       - run:
           name: update-npm
           command: 'sudo npm install -g npm@latest'
-      - restore_cache: 
+      - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: install-npm-wee

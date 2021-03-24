@@ -83,7 +83,7 @@ app.use(morgan(loggerFormat, {
     stream: process.stdout
 }))
 
-/* Configured Routes */  
+/* Configured Routes */
 app.use('/', index);
 app.use('/gitlab/', gitlab)
 app.use("/public", express.static(path.join(__dirname, 'public')))
