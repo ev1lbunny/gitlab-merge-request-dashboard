@@ -131,6 +131,42 @@ Express App running → PORT 3000
 
 *NB. Where the displayed config matches the config you defined in the app.json config file.
 
+### Installing & Running using eks
+
+Assumes you have existing eks cluster and ecr setup for now. To be added as terraform code later.
+Also you will have to sort out any security group requirements to allow this to be exposed . That is not yet coded in terraform.
+
+After building the docker image and uploading it to your ecr repo. You will need to update the eks-workload-yaml variables to the values you require to be passed into the docker container.
+
+Creates the namespace used in the templates
+```
+kubectl create namepace merge-dash
+```
+
+Deployed the service and deployment setup
+```
+kubectl apply -f eks-workload-yaml/gitlab-eks-service.yaml
+service/merge-dash created
+
+kubectl apply -f eks-workload-yaml/gitlab-eks-deployment.yaml
+deployment.apps/gitlab-merge-request-dashboard created
+```
+
+Then you can check if its deployed
+```
+kubectl describe deployment gitlab-merge-request-dashboard -n merge-dash
+Name:                   gitlab-merge-request-dashboard
+Namespace:              merge-dash
+CreationTimestamp:      Wed, 24 Mar 2021 01:58:16 +0000
+Labels:                 app=gitlab-merge-request-dashboard
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=gitlab-merge-request-dashboard
+Replicas:               3 desired | 3 updated | 3 total | 3 available | 0 unavailable
+
+```
+
+
+
 ### Environment Variables
 
 Anything in `app.json` can be overwritten with environment variables, the format of:
