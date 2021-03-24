@@ -16,6 +16,7 @@ spec:
       port: 3003
       targetPort: 3003
       name: merge-dash
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
