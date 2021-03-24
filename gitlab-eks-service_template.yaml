@@ -24,7 +24,7 @@ metadata:
   labels:
     app: gitlab-merge-request-dashboard
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: gitlab-merge-request-dashboard
