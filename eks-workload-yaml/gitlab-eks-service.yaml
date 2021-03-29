@@ -4,6 +4,7 @@ metadata:
   name: merge-dash
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-type: nlb-ip
+    service.beta.kubernetes.io/aws-load-balancer-internal: "true"
   namespace: merge-dash
   labels:
     app: gitlab-merge-request-dashboard
