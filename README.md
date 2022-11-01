@@ -3,6 +3,10 @@
 This is a web based dashboard to show open merge requests for gitlab groups.
 Uses: nodejs/expressjs/pug templates and promises
 
+## Screenshot
+
+![screenshot](./src/public/images/dashboard_help_02.png)
+
 ## Getting Started
 
 Clone the repository to your local machine.
